@@ -88,7 +88,7 @@ class Process
     }
 
     public static function getBasePath() {
-        return dirname(dirname(dirname(dirname(dirname(dirname(__DIR__))))));
+        return dirname(dirname(dirname(dirname(dirname(__DIR__)))));
     }
 
     protected static function out($string) {
