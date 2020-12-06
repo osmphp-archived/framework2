@@ -25,7 +25,7 @@ class AppTest extends UnitTestCase
     public function test_that_packages_are_loaded() {
         global $osm_app; /* @var App $osm_app */
 
-        $this->assertArrayHasKey('osmphp/framework', $osm_app->packages);
+        $this->assertArrayHasKey('osmphp/framework2', $osm_app->packages);
     }
 
     public function test_that_modules_are_loaded() {

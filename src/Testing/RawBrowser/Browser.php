@@ -56,7 +56,7 @@ class Browser extends BaseBrowser
         $dir = __DIR__;
 
         $app = App::runApp('http', [
-            'base_path' => realpath($dir . '/../../../../../../../'),
+            'base_path' => realpath($dir . '/../../../../../../'),
             'env' => 'testing',
             'request' => Request::new(['symfony_request' => $request_]),
             'catch_output' => true,

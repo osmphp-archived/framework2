@@ -27,8 +27,9 @@ abstract class TestCase extends BaseTestCase
     protected function recreateApp() {
         $dir = __DIR__;
         return static::$app_instance = App::createApp([
-            'base_path' => realpath($dir . '/../../../../../../'),
+            'base_path' => realpath($dir . '/../../../../../'),
             'env' => 'testing',
+            'area' => 'test',
         ])->boot();
     }
 
