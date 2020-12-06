@@ -15,6 +15,12 @@ use Osm\Framework\Views\View;
 use Psr\Log\LoggerInterface;
 
 /**
+ *
+ * Layout object only lives during the rendering. However, it does expect the
+ * current Area object to be set in the App object.
+ *
+ * Dependencies:
+ *
  * @property Cache $cache @required
  * @property Area $area @required
  * @property Theme $theme @required

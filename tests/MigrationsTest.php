@@ -1,6 +1,6 @@
 <?php
 
-namespace Osm\Tests\Framework;
+namespace Osm\Framework\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
 use Osm\Core\App;

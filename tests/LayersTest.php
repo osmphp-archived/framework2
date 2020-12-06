@@ -1,6 +1,6 @@
 <?php
 
-namespace Osm\Tests\Framework;
+namespace Osm\Framework\Tests;
 
 use Osm\Core\App;
 use Osm\Framework\Layers\Layout;

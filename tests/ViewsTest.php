@@ -1,6 +1,6 @@
 <?php
 
-namespace Osm\Tests\Framework;
+namespace Osm\Framework\Tests;
 
 use Osm\Framework\Testing\Tests\UnitTestCase;
 use Osm\Framework\Views\View;

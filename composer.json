@@ -14,7 +14,7 @@
         ],
         "psr-4": {
             "Osm\\Framework\\": "src/",
-            "Osm\\Tests\\": "tests/",
+            "Osm\\Framework\\Tests\\": "tests/",
             "Osm\\Samples\\": "samples/"
         }
     },
