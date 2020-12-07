@@ -7,7 +7,9 @@ use Osm\Framework\Console\Command;
 use Osm\Core\Packages\Package;
 use Osm\Framework\Testing\ConfigModule;
 use Osm\Framework\Testing\ConfigSuite;
+use Osm\Framework\Testing\Exceptions\CantInferModule;
 use Osm\Framework\Testing\Module;
+use Osm\Framework\Testing\Tests\UnitTestCase;
 
 /**
  * @property ConfigSuite[] $suites @temp
@@ -121,7 +123,7 @@ EOT;
             if (strrpos($class, 'Test') != strlen($class) - strlen('Test')) {
                 continue;
             }
-            $test = new $class();
+            $test = new $class(); /* @var UnitTestCase $test */
 
             $suite = $test->suite ?? '';
             if (!isset($this->suites[$suite])) {
@@ -129,7 +131,7 @@ EOT;
             }
             $_suite = $this->suites[$suite];
 
-            $module = $this->getModule($package, $class);
+            $module = $test->module ?? $this->inferModule($package, $class);
             if (!isset($_suite->modules[$module])) {
                 $_suite->modules[$module] = ConfigModule::new(['files' => []], $module);
             }
@@ -145,11 +147,13 @@ EOT;
      * @param string $class
      * @return string
      */
-    protected function getModule($package, $class) {
+    protected function inferModule($package, $class) {
         global $osm_app; /* @var App $osm_app */
 
         if (!isset($package->namespaces[$package->src])) {
-            return '';
+            throw new CantInferModule(osm_t(
+                "Can't infer test module as package ':package' doesn't have a PSR-4 entry for 'src/' directory in its 'composer.json'",
+                ['package' => $package->name]));
         }
 
         $class = $package->namespaces[$package->src] . substr($class, strlen($package->namespaces[$package->tests]));
@@ -159,7 +163,9 @@ EOT;
             }
         }
 
-        return '';
+        throw new CantInferModule(osm_t(
+            "Can't infer module for ':test' test class",
+            ['test' => $class]));
     }
 
     protected function renderSuites() {

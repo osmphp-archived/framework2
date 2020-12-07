@@ -7,7 +7,8 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
  * @property string $suite
- * @property \Osm\Framework\Testing\Module $module
+ * @property Module $testing_module
+ * @property BaseModule $module
  */
 abstract class TestCase extends BaseTestCase
 {
@@ -17,7 +18,7 @@ abstract class TestCase extends BaseTestCase
         global $osm_app; /* @var App $osm_app */
 
         switch ($property) {
-            case 'module':
+            case 'testing_module':
                 return $osm_app->modules['Osm_Framework_Testing'];
         }
 

@@ -38,7 +38,7 @@ abstract class AppTestCase extends UnitTestCase
 
     public function __get($property) {
         switch ($property) {
-            case 'browsers': return $this->module->browsers;
+            case 'browsers': return $this->testing_module->browsers;
         }
 
         return parent::__get($property);

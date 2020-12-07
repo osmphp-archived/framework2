@@ -12,7 +12,7 @@ use Swift_Message;
 use Swift_SmtpTransport;
 
 /**
- * @property Module $module @required
+ * @property Module $email_module @required
  */
 class EmailsTest extends UnitTestCase
 {
@@ -20,7 +20,7 @@ class EmailsTest extends UnitTestCase
         global $osm_app; /* @var App $osm_app */
 
         switch ($property) {
-            case 'module': return $osm_app->modules['Osm_Framework_Emails'];
+            case 'email_module': return $osm_app->modules['Osm_Framework_Emails'];
         }
 
         return parent::__get($property);
@@ -55,7 +55,7 @@ class EmailsTest extends UnitTestCase
     }
 
     public function testEmailApi() {
-        $sent = $this->module->send((new Swift_Message('Module send() Works!'))
+        $sent = $this->email_module->send((new Swift_Message('Module send() Works!'))
             ->setFrom(['example@domain.com' => 'The Sender'])
             ->setTo(['another@domain.com'])
             ->setBody('My <em>amazing</em> body', 'text/html')

@@ -17,4 +17,6 @@ return [
     "URL line starting with GET, POST or DELETE not found" => "URL line starting with GET, POST or DELETE not found",
     "Test suites to be included. If list is empty, all test suites are included" => "Test suites to be included. If list is empty, all test suites are included",
     "Privileged App Tests" => "Privileged App Tests",
+    "Can't infer test module as package ':package' doesn't have a PSR-4 entry for 'src/' directory in its 'composer.json'" => "Can't infer test module as package ':package' doesn't have a PSR-4 entry for 'src/' directory in its 'composer.json'",
+    "Can't infer module for ':test' test class" => "Can't infer module for ':test' test class",
 ];
