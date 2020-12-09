@@ -15,6 +15,10 @@ abstract class TestCase extends BaseTestCase
     public static $app_instance;
 
     public function __get($property) {
+        return $this->$property = $this->default($property);
+    }
+
+    protected function default($property) {
         global $osm_app; /* @var App $osm_app */
 
         switch ($property) {

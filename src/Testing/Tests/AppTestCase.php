@@ -2,6 +2,9 @@
 
 namespace Osm\Framework\Testing\Tests;
 
+use Osm\Core\App;
+use Osm\Data\TableQueries\TableQuery;
+use Osm\Framework\Db\Db;
 use Osm\Framework\Migrations\Migrator;
 use Osm\Framework\Processes\Process;
 use Osm\Framework\Testing\Browser\Browser;
@@ -9,12 +12,23 @@ use Osm\Framework\Testing\Exceptions\UndefinedBrowser;
 
 /**
  * @property array $browsers
+ * @property Db|TableQuery[] $db
  */
 abstract class AppTestCase extends UnitTestCase
 {
     public $suite = 'app';
 
     protected static $areAppTestsSetUp = false;
+
+    protected function default($property) {
+        global $osm_app; /* @var App $osm_app */
+
+        switch ($property) {
+            case 'db': return $osm_app->db;
+        }
+
+        return parent::default($property);
+    }
 
     protected function setUp(): void {
         parent::setUp();
@@ -73,6 +87,16 @@ abstract class AppTestCase extends UnitTestCase
 
         foreach ($browsers_ as $browser_) {
             $browser_->terminate();
+        }
+    }
+
+    protected function executeAndRollback(callable $callback) {
+        $this->db->connection->beginTransaction();
+        try {
+            return $callback();
+        }
+        finally {
+            $this->db->connection->rollBack();
         }
     }
 }
