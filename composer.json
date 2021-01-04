@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.0",
         "osmphp/core": "^0.1",
         "nikic/php-parser": "^4.0",
         "laravel/framework": "^7",
