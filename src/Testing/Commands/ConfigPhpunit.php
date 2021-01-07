@@ -139,7 +139,6 @@ EOT;
 
             $_module->files[] = strtr(substr($fileInfo->getPathname(), strlen($osm_app->base_path) + 1), '\\', '/');
         }
-
     }
 
     /**
@@ -207,6 +206,7 @@ EOT;
 
     protected function renderFiles(ConfigModule $module) {
         $result = '';
+        sort($module->files);
         foreach ($module->files as $file) {
             $result .= "            <file>{$file}</file>\n";
         }
