@@ -26,6 +26,11 @@ abstract class TestCase extends BaseTestCase
                 return $osm_app->modules['Osm_Framework_Testing'];
         }
 
+        $method = "get_{$property}";
+        if (method_exists($this, $method)) {
+            return $this->$method();
+        }
+
         return null;
     }
 

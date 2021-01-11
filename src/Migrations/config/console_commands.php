@@ -15,7 +15,7 @@ return [
             ],
             'step' => [
                 'type' => InputOption::VALUE_IS_ARRAY | InputOption::VALUE_OPTIONAL,
-                'description' => osm_t("Steps to be executed. If omitted, --step=schema --step=data are assumed."),
+                'description' => osm_t("Steps to be executed. If omitted, --step=Schema --step=Data are assumed."),
             ],
         ],
         'arguments' => [
