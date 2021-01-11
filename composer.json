@@ -26,7 +26,6 @@
         "laravel/helpers": "^1.0",
         "symfony/dom-crawler": "^5",
         "doctrine/dbal": "~2.5",
-        "fzaninotto/faker": "~1.8",
         "predis/predis": "^1.1",
         "swiftmailer/swiftmailer": "^6"
     },
