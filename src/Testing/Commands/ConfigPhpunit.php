@@ -42,11 +42,6 @@ class ConfigPhpunit extends Command
     <testsuites>
 {$this->renderSuites()}
     </testsuites>
-    <filter>
-        <whitelist>
-{$this->renderCoveredPackages()}
-        </whitelist>
-    </filter>
 </phpunit>
 EOT;
         file_put_contents($filename, $output);
